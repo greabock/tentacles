@@ -49,6 +49,13 @@ ArticleProvider extends ServiceProvider {
 
 ```
 
+Now we can do this:
+
+```
+$user = User::with('articles')->first();
+```
+
+
 
 
 
