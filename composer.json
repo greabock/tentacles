@@ -1,0 +1,26 @@
+{
+    "name": "greabock/tentacles",
+    "description": "Da epic tentacles for Laravel",
+    "keywords": ["laravel", "model", "trait"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Greabock",
+            "email": "greabock@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Greabock\\Tentacles\\": "src/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.02-dev"
+        }
+    },
+    "minimum-stability": "dev"
+}
