@@ -43,7 +43,7 @@ ArticleProvider extends ServiceProvider {
   {
     User::addRelation('articles', function(User $model)
     {
-      return $this->hasMany(Article::class);
+      return $model->hasMany(Article::class);
     });
   }
   
