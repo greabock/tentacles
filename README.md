@@ -1,6 +1,10 @@
 # tentacles
 laravel package for resolving relations... whut? I'd better show.
 
+```
+"greabock/tentacles": "0.02.*@dev"
+```
+
 user-model...
 ```php
 <? namespace App\User\Models;
