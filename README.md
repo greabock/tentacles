@@ -31,7 +31,10 @@ use Illuminate\Database\Eloquent\Model;
 
 ArticleProvider extends ServiceProvider {
 
-  public function register(){#..}
+  public function register()
+  {
+    #..
+  }
   
   public function boot()
   {
