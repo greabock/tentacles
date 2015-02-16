@@ -20,6 +20,23 @@ trait Tentacle {
 	{
 		static::$tentacles[$name] = $function;
 	}
+
+	public function getAttribute($key)
+	{
+		$attribute = parent::getAttribute($key);
+		if ( ! is_null($attribute))
+		{
+			return $attribute;
+		}
+
+		$camelKey = camel_case($key);
+
+		if (array_key_exists($camelKey, static::$tentacles))
+		{
+			return $this->getRelationshipFromMethod($key, $camelKey);
+		}
+	}
+	
 }
 
 
