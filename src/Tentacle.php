@@ -9,9 +9,8 @@ trait Tentacle {
 		if (array_key_exists($method, static::$tentacles))
 		{
 			$method = static::$tentacles[$method];
-
+			$method = \Closure::bind($method, $this, get_class());
 			return $method($this);
-
 		}
 
 		return parent::__call($method, $parameters);
