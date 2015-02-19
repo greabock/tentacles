@@ -2,7 +2,7 @@
 laravel package for resolving relations... whut? I'd better show.
 
 ```
-"greabock/tentacles": "0.02.*@dev"
+"greabock/tentacles": "dev-master"
 ```
 
 user-model...
