@@ -1,9 +1,18 @@
 <?php namespace Greabock\Tentacles;
 
 trait Tentacle {
-
+	
+	/**
+	 * @var array
+	 */
 	protected static $tentacles = [];
-
+	
+	/**
+	 * @param string $method
+	 * @param arraay $parameters
+	 * 
+	 * @return mixed
+	 */
 	public function __call($method, $parameters)
 	{
 		if (array_key_exists($method, static::$tentacles))
@@ -16,24 +25,33 @@ trait Tentacle {
 		return parent::__call($method, $parameters);
 	}
 
+
+	/**
+	 * @param string $name
+	 * @param callable $function
+	 * 
+	 * @return void
+	 */
 	public static function addRelation($name, callable $function)
 	{
 		static::$tentacles[$name] = $function;
 	}
 
+	/**
+	 * @param string $key
+	 *
+	 * @return mixed
+	 */
 	public function getAttribute($key)
 	{
 		$attribute = parent::getAttribute($key);
-		if ( ! is_null($attribute))
+		if (!is_null($attribute))
 		{
 			return $attribute;
 		}
-
-		$camelKey = camel_case($key);
-
-		if (array_key_exists($camelKey, static::$tentacles))
+		if (array_key_exists($key, static::$tentacles))
 		{
-			return $this->getRelationshipFromMethod($key, $camelKey);
+			return $this->getRelationshipFromMethod($key);
 		}
 	}
 	
