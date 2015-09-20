@@ -1,26 +1,27 @@
 # tentacles
-laravel package for resolving relations... whut? I'd better show.
 
+
+Composer
 ```
 "greabock/tentacles": "dev-master"
 ```
 
-user-model...
-```php
+user-model...    
+```php   
 <? namespace App\User\Models;
 
 use Eloquent;
-use Greabock\Tentacles\Tentacle;
+use Greabock\Tentacles\EloquentTentacle;
 
 User extends Eloquent {
   
-  use Tentacle;
+  use EloquentTentacle;
 
 }
 
 ```
 
-SeviceProvider
+ServiceProvider
 
 ```php
 <?php namespace App\Article\Providers;
@@ -41,14 +42,19 @@ ArticleProvider extends ServiceProvider {
   
   public function boot()
   {
-    User::addRelation('articles', function(User $model)
+    User::addExternalMethod('articles', function()
     {
-      return $model->hasMany(Article::class);
+        return $this->hasMany(Article::class);
+    });
+
+
+    User::addExternalMethod('getFullnameAttribute', function()
+    {
+        return $this->first_name . ' ' . $this->last_name; 
     });
   }
   
 }
-
 
 ```
 
@@ -56,6 +62,8 @@ Now we can do this:
 
 ```
 $user = User::with('articles')->first();
+
+$fullname = $user->fullname;
 ```
 
 
