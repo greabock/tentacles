@@ -7,6 +7,7 @@ use BadMethodCallException;
 
 trait Parasite
 {
+
     /**
      * External methods provided from outside
      *
@@ -14,12 +15,12 @@ trait Parasite
      */
     protected static $externalMethods = [];
 
+
     /**
-     * Handle dynamic method calls into the owner of Parasite.
+     * Handle dynamic method calls into an owner of the Parasite.
      *
      * @param string $method
-     * @param array $parameters
-     *
+     * @param array  $parameters
      * @return mixed
      */
     public function __call($method, $parameters)
@@ -31,8 +32,13 @@ trait Parasite
             return call_user_func_array($closure, $parameters);
         }
 
-        if(method_exists(parent::class, '__call'))
+        if(method_exists($this, '__call_after'))
         {
+            return $this->__call_after($method, $parameters);
+        }
+
+        // Keep ownder's  ancestor functional
+        if (method_exists(parent::class, '__call')) {
             return parent::__call($method, $parameters);
         }
 
@@ -40,12 +46,11 @@ trait Parasite
     }
 
     /**
-     * @param string $name
-     * @param callable $method
-
+     * @param string   $name
+     * @param Closure $method
      * @return void
      */
-    public static function addExternalMethod($name, callable $method)
+    public static function addExternalMethod($name, Closure $method)
     {
         static::$externalMethods[$name] = $method;
     }

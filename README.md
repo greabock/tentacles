@@ -10,10 +10,10 @@ user-model...
 ```php   
 <? namespace App\User\Models;
 
-use Eloquent;
+use Illuminate\Database\Eloquent\Model;
 use Greabock\Tentacles\EloquentTentacle;
 
-User extends Eloquent {
+User extends Model {
   
   use EloquentTentacle;
 
