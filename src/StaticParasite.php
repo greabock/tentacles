@@ -14,19 +14,17 @@ trait StaticParasite
     protected static $staticExternalMethods = [];
 
 
-
-    public static function __callStatic($method, $parameters) {
+    public static function __callStatic($method, $parameters)
+    {
 
         if (isset(static::$staticExternalMethods[$method])) {
-
-            $closure = Closure::bind(static::$staticExternalMethods[$method], null , static::class);
+            $closure = Closure::bind(static::$staticExternalMethods[$method], null, static::class);
 
             return call_user_func_array($closure, $parameters);
         }
 
-        if(method_exists(static::class, '__call_static_after'))
-        {
-            return static::__call_static_after($method, $parameters);
+        if (method_exists(static::class, '__call_static_after')) {
+            return static::__callStaticAfter($method, $parameters);
         }
 
         // Keep ownder's  ancestor functional
@@ -40,7 +38,7 @@ trait StaticParasite
 
 
     /**
-     * @param string   $name
+     * @param string  $name
      * @param Closure $method
      * @return void
      */

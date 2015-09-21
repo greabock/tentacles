@@ -17,7 +17,6 @@ trait EloquentTentacle
     public function hasGetMutator($key)
     {
         if (isset(static::$externalMethods['get' . Str::studly($key) . 'Attribute'])) {
-
             return true;
         }
 
@@ -53,17 +52,14 @@ trait EloquentTentacle
     public function getRelationValue($key)
     {
         if ($this->relationLoaded($key)) {
-
             return $this->relations[$key];
         }
 
         if (isset(static::$externalMethods[$key])) {
-
             return $this->getRelationshipFromMethod($key);
         }
 
         if (method_exists($this, $key)) {
-
             return $this->getRelationshipFromMethod($key);
         }
     }

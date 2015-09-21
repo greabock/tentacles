@@ -26,14 +26,12 @@ trait Parasite
     public function __call($method, $parameters)
     {
         if (isset(static::$externalMethods[$method])) {
-
             $closure = Closure::bind(static::$externalMethods[$method], $this, static::class);
 
             return call_user_func_array($closure, $parameters);
         }
 
-        if(method_exists($this, '__call_after'))
-        {
+        if (method_exists($this, '__callAfter')) {
             return $this->__call_after($method, $parameters);
         }
 
@@ -46,7 +44,7 @@ trait Parasite
     }
 
     /**
-     * @param string   $name
+     * @param string  $name
      * @param Closure $method
      * @return void
      */
