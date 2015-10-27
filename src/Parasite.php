@@ -32,7 +32,7 @@ trait Parasite
         }
 
         if (method_exists($this, '__callAfter')) {
-            return $this->__call_after($method, $parameters);
+            return $this->__callAfter($method, $parameters);
         }
 
         // Keep ownder's  ancestor functional
