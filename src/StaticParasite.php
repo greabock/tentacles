@@ -25,7 +25,7 @@ trait StaticParasite
             return call_user_func_array($closure, $parameters);
         }
 
-        if (method_exists(static::class, '__call_static_after')) {
+        if (method_exists(static::class, '__callStaticAfter')) {
             return static::__callStaticAfter($method, $parameters);
         }
 
