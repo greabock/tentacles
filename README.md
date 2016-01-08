@@ -1,5 +1,5 @@
 # tentacles
-
+*Monkey-patching for eloquent models*
 
 Composer
 ```
