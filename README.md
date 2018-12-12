@@ -33,7 +33,7 @@ use App\User\Models\User;
 
 use Illuminate\Database\Eloquent\Model;
 
-ArticleProvider extends ServiceProvider {
+class ArticleProvider extends ServiceProvider {
 
   public function register()
   {
