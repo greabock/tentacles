@@ -1,4 +1,4 @@
-<?php namespace Greabock\Tentacles;
+<?php namespace Do6po\Tentacles;
 
 use Illuminate\Support\Str;
 

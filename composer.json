@@ -1,5 +1,5 @@
 {
-	"name": "greabock/tentacles",
+	"name": "do6po/tentacles",
 	"description": "Da epic tentacles for Eloquent",
 	"keywords": [
 		"laravel",
@@ -10,19 +10,19 @@
 	"license": "MIT",
 	"authors": [
 		{
-			"name": "Greabock",
-			"email": "greabock@gmail.com"
+			"name": "Do6po",
+			"email": "helvisbox@gmail.com"
 		}
 	],
 	"require": {
 		"php": ">=5.5.0",
-		"illuminate/support" : "5.*",
-		"illuminate/database" : "5.*"
+		"illuminate/support" : "^5.5",
+		"illuminate/database" : "^5.5"
 	},
 
 	"autoload": {
 		"psr-4": {
-			"Greabock\\Tentacles\\": "src/"
+			"Do6po\\Tentacles\\": "src/"
 		}
 	},
 

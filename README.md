@@ -1,9 +1,11 @@
 # tentacles
+This is fork from the package https://github.com/greabock/tentacles 
+(https://packagist.org/packages/greabock/tentacles)
 *Monkey-patching for eloquent models*
 
 Composer
 ```
-"greabock/tentacles": "dev-master"
+"do6po/tentacles": "dev-master"
 ```
 
 user-model...    
@@ -11,7 +13,7 @@ user-model...
 <? namespace App\User\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Greabock\Tentacles\EloquentTentacle;
+use Do6po\Tentacles\EloquentTentacle;
 
 User extends Model {
   
